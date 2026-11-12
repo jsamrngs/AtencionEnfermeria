@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe en Tiempo Real - Retiro de Alumnos</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="body-tv">
+
+    <header class="header-tv">
+        <div class="titulo-pantalla">
+            <h1>ALUMNOS EN ENFERMERÍA v 1.0</h1>
+            <p>Atención en tiempo real | Listado de sugerencias de retiro</p>
+        </div>
+        <div id="estado-conexion" class="estado desconectado">○ Conectando...</div>
+    </header>
+
+    <main class="contenedor-tv">
+        <table class="tabla-tv">
+            <thead>
+                <tr>
+                    <th class="col-hora">HORA</th>
+                    <th class="col-nombre">NOMBRE DEL ALUMNO</th>
+                    <th class="col-curso">CURSO</th>
+                    <th class="col-motivo">MOTIVO INGRESO</th>
+                    <th class="col-atencion">ATENCIÓN</th>
+                    <th class="col-acciones">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody id="lista-registros">
+                {% if registros_iniciales %}
+                    {% for reg in registros_iniciales|reverse %}
+                    <tr class="registro-item motivo-{{ reg.atencion_requerida }}">
+                        <td class="col-hora">{{ reg.hora }}</td>
+                        <td class="col-nombre">{{ reg.nombre }}</td>
+                        <td class="col-curso">{{ reg.curso }}</td>
+                        <td class="col-motivo"><strong>{{ reg.motivo }}</strong></td>
+                        <td class="col-atencion">{{ reg.atencion }}</td>
+                        <td class="col-acciones">
+                            <span class="badge badge-{{ reg.atencion_requerida }}">
+                                {% if reg.atencion_requerida == 'leve' %}SUGERENCIA RETIRO{% endif %}
+                                {% if reg.atencion_requerida == 'severo' %}ATENCIÓN PSICÓLOGA{% endif %}
+                                {% if reg.atencion_requerida == 'grave' %}NOTIFICAR APODERADO{% endif %}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr id="fila-vacia">
+                        <td colspan="6" class="mensaje-vacio">Sin registros de accidentes por el momento</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </main>
+
+    <script src="/static/js/tv_informe.js?v=2"></script>
+</body>
+</html>

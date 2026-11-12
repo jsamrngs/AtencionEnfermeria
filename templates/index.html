@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Diario de Enfermería</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="body-enfermera">
+
+    <div class="card-formulario">
+        <h2>Notificación de Enfermería</h2>
+        <p class="subtitulo">Ingresa los datos del alumno para sugerir su retiro.</p>
+
+        <div id="mensaje-status" class="mensaje" style="display: none;"></div>
+
+        <form id="form-accidente">
+    <div class="campo">
+        <label for="nombre">Nombre del Alumno:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required autocomplete="off">
+    </div>
+
+    <div class="campo">
+        <label for="curso">Curso:</label>
+        <input type="text" id="curso" name="curso" placeholder="Ej: 4° Básico A" required autocomplete="off">
+    </div>
+
+    <div class="campo">
+        <label for="atencion_requerida">Atención requerida:</label>
+        <select id="atencion_requerida" name="atencion_requerida" required>
+            <option value="leve">Sugerencia de Retiro</option>
+            <option value="severo" selected>Sugerencia atención Psicóloga</option>
+            <option value="grave">Notificación al apoderado</option>
+        </select>
+    </div>
+
+    <div class="campo">
+        <label for="motivo">Motivo ingreso:</label>
+        <input type="text" id="motivo" name="motivo" placeholder="Ej: Retiro por golpe en la cabeza" required autocomplete="off">
+    </div>
+
+    <div class="campo">
+        <label for="atencion">Acciones realizadas:</label>
+        <!-- AHORA SÍ TIENE id="atencion" -->
+        <input type="text" id="atencion" name="atencion" placeholder="Ej: Aplicación de compresas frías" required autocomplete="off">
+    </div>
+
+    <button type="submit" class="btn-enviar">Registrar y Notificar</button>
+</form>
+    </div>
+
+    <!-- Reemplaza la línea del script al final de index.html por esta: -->
+<script src="/static/js/enfermera.js?v=2"></script>
+</body>
+</html>
