@@ -13,13 +13,13 @@ templates = Jinja2Templates(directory="templates")
 
 REGISTROS: List[dict] = []
 
-# Modelo actualizado con todos los campos
+
 class RegistroAccidente(BaseModel):
     nombre: str
     curso: str
-    atencion_requerida: str  # leve, severo, grave
-    motivo: str              # Ej: Golpe en la cabeza
-    atencion: str            # Ej: Compresas frías
+    atencion_requerida: str  
+    motivo: str              
+    atencion: str            
 
 class ConnectionManager:
     def __init__(self):
@@ -54,7 +54,7 @@ async def vista_tv(request: Request):
         context={"registros_iniciales": REGISTROS}
     )
 
-# Revisa que NO tengas otra función llamada registrar_accidente o con la misma ruta
+
 @app.post("/api/registrar")
 async def registrar_accidente(datos: RegistroAccidente):
     nuevo_registro = {
