@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             atencion: document.getElementById("atencion").value
         };
 
-        // Imprimimos en consola el paquete exacto que enviamos
+        
         console.log("Datos enviados:", payload);
 
         try {
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 form.reset();
                 document.getElementById("nombre").focus();
             } else {
-                // AHORA IMPRIMIREMOS EL ERROR EXACTO QUE MANDA FASTAPI
+                
                 const errorDetalle = await response.json();
                 console.error("DETALLE DEL ERROR 422:", errorDetalle);
                 mostrarMensaje("Error al registrar alumno. Intente nuevamente.", "error");
